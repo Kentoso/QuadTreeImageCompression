@@ -31,26 +31,30 @@ Default: ```false```
 ```
 Default: ```#ffffff```(White)
 ## Description
-#### "Same" colors
+### "Same" colors
 Let's define "sameness" of colors
+
 Colors are considered "same" if the linear distance between them is less than or equal to ```--radius```
 
 
 !["Sameness" illustration](https://raw.githubusercontent.com/Kentoso/QuadTreeImageCompression/master/img/sameness.png)
 
-**1** has no "same" colors (apart from itself)
-**2** is "same" as **2**, **3** and **4**
-**3** is "same" as **2**, **3**
-**4** is "same" as **2**, **4**
+**[1]** has no "same" colors (apart from itself)
 
-> **Note**
+**[2]** is "same" as **[2]**, **[3]** and **[4]**
+
+**[3]** is "same" as **[2]**, **[3]**
+
+**[4]** is "same" as **[2]**, **[4]**
+
+> **Note** <br/>
 > "Sameness" is symmetric, reflexive, and not transitive
 
-#### Procedure
+### Procedure
 Quad tree iterates through all pixels in its region, then:
 1. _if_ all colors are considered "same" - calculate average color of the region and set all pixels in the region to this color
 2. _if_ at least one color is considered "not same", then we subdivide quadtree into four children and repeat this procedure for each of them 
-> **Note** 
+> **Note** <br/>
 > if a quadtree cannot be subdivided, then its colors are considered "same"
 
 # Examples
